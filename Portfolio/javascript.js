@@ -2,6 +2,50 @@
 const navLinks = document.querySelectorAll("[data-nav-link]");
 const pages = document.querySelectorAll("article");
 
+// Add animation classes to elements
+function addAnimations() {
+  // Animate service items
+  const serviceItems = document.querySelectorAll('.service-item');
+  serviceItems.forEach((item, index) => {
+    item.classList.add('animate-slide-in-up');
+    item.style.animationDelay = `${index * 0.1}s`;
+  });
+
+  // Animate project cards
+  const projectItems = document.querySelectorAll('.blog-post-item');
+  projectItems.forEach((item, index) => {
+    item.classList.add('animate-scale-in');
+    item.style.animationDelay = `${index * 0.15}s`;
+  });
+
+  // Animate achievement cards
+  const achievementItems = document.querySelectorAll('.testimonials-item');
+  achievementItems.forEach((item, index) => {
+    item.classList.add('animate-slide-in-left');
+    item.style.animationDelay = `${index * 0.2}s`;
+  });
+}
+
+// Animate skill bars when page becomes active
+function animateSkillBars() {
+  const skillBars = document.querySelectorAll('.skill-progress-fill');
+  skillBars.forEach((bar, index) => {
+    const targetWidth = bar.getAttribute('data-width');
+    if (targetWidth) {
+      // Reset width first
+      bar.style.width = '0%';
+      // Force reflow to ensure reset is applied
+      void bar.offsetWidth;
+      // Animate to target width after a short delay
+      setTimeout(() => {
+        bar.style.width = targetWidth;
+        bar.style.transition = 'width 1.5s ease-out';
+      }, 100 + (index * 100)); // Staggered animation
+    }
+  });
+}
+
+// Navigation event listener
 navLinks.forEach(link => {
   link.addEventListener("click", () => {
     const targetPage = link.dataset.page;
@@ -19,8 +63,54 @@ navLinks.forEach(link => {
     pages.forEach(page => {
       if (page.dataset.page === targetPage) {
         page.classList.add("active");
+        
+        // Trigger animations for active page
+        setTimeout(() => {
+          addAnimations();
+          if (targetPage === 'resume') {
+            // Small delay to ensure page is visible before animating
+            setTimeout(() => {
+              animateSkillBars();
+            }, 50);
+          }
+        }, 100);
       }
     });
+  });
+});
+
+// Initialize on page load
+document.addEventListener('DOMContentLoaded', () => {
+  // Reset skill bars to 0%
+  const skillBars = document.querySelectorAll('.skill-progress-fill');
+  skillBars.forEach(bar => {
+    bar.style.width = '0%';
+  });
+  
+  // Check if resume page is active on load
+  const activePage = document.querySelector('article.active');
+  if (activePage && activePage.dataset.page === 'resume') {
+    setTimeout(() => {
+      animateSkillBars();
+    }, 100);
+  }
+  
+  // Add initial animations
+  setTimeout(() => {
+    addAnimations();
+  }, 500);
+});
+
+// Add hover effect to navbar links
+navLinks.forEach(link => {
+  link.addEventListener('mouseenter', () => {
+    link.style.transform = 'translateY(-2px)';
+  });
+  
+  link.addEventListener('mouseleave', () => {
+    if (!link.classList.contains('active')) {
+      link.style.transform = 'translateY(0)';
+    }
   });
 });
 
