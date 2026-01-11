@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vaibhav - Personal Portfolio</title>
+
+  <!--
+    - favicon
+  -->
+  <link rel="shortcut icon" href="./images/favicon.ico" type="image/x-icon">
+
+  <!--
+    - custom css link
+  -->
+  <link rel="stylesheet" href="style.css">
+
+  <!--
+    - google font link
+  -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+ 
+
+  <!--
+    - #MAIN
+  -->
+
+  <main>
+
+    <!--
+      - #SIDEBAR
+    -->
+
+    <aside class="sidebar" data-sidebar>
+
+      <div class="sidebar-info">
+
+        <figure class="avatar-box">
+          <img src="./images/avatar.png" alt="Vaibhav Pattanshetti" width="80">
+        </figure>
+
+        <div class="info-content">
+          <h1 class="name" title="Vaibhav Pattanshetti">Vaibhav</h1>
+
+          <p class="title">B.Tech Student</p>
+        </div>
+
+
+      </div>
+
+      <div class="sidebar-info_more">
+
+        <div class="separator"></div>
+
+        <ul class="contacts-list">
+
+          <li class="contact-item">
+
+            <div class="icon-box">
+              <ion-icon name="mail-outline"></ion-icon>
+            </div>
+
+            <div class="contact-info">
+              <p class="contact-title">Email</p>
+
+              <a href="mailto:vaibhavpattanshetti123@gmail.com" class="contact-link">vaibhavpattanshetti123@gmail.com</a>
+            </div>
+
+          </li>
+
+          <li class="contact-item">
+
+            <div class="icon-box">
+              <ion-icon name="phone-portrait-outline"></ion-icon>
+            </div>
+
+            <div class="contact-info">
+              <p class="contact-title">Phone</p>
+
+              <a href="tel:+917972311618" class="contact-link">+91 7972311618</a>
+            </div>
+
+          </li>
+
+          <li class="contact-item">
+
+            <div class="icon-box">
+              <ion-icon name="calendar-outline"></ion-icon>
+            </div>
+
+            <div class="contact-info">
+              <p class="contact-title">Birthday</p>
+
+              <time datetime="2005-01-18">Jan 18, 2005</time>
+            </div>
+
+          </li>
+
+          <li class="contact-item">
+
+            <div class="icon-box">
+              <ion-icon name="location-outline"></ion-icon>
+            </div>
+
+            <div class="contact-info">
+              <p class="contact-title">Location</p>
+
+              <address>Pune, Maharashtra, India</address>
+            </div>
+
+          </li>
+
+        </ul>
+
+        <div class="separator"></div>
+
+        
+
+        <ul class="social-list">
+
+          <li class="social-item">
+            <a target="_blank" href="https://wa.me/917972311618" class="social-link">
+              <ion-icon name="logo-whatsapp"></ion-icon>
+            </a>
+          </li>
+
+          <li class="social-item">
+            <a target="_blank" href="https://www.linkedin.com/in/vaibhav-pattanshetti/" class="social-link">
+              <ion-icon name="logo-linkedin"></ion-icon>
+            </a>
+          </li>
+
+          <li class="social-item">
+            <a target="_blank" href="https://www.instagram.com/just_vaibhav18/" class="social-link">
+              <ion-icon name="logo-instagram"></ion-icon>
+            </a>
+          </li>
+
+        </ul>
+
+      </div>
+
+    </aside>
+
+
+
+
+
+    <!--
+      - #main-content
+    -->
+
+    <div class="main-content">
+
+      <!--
+        - #NAVBAR
+      -->
+
+      <nav class="navbar">
+
+        <ul class="navbar-list">
+
+          <li class="navbar-item">
+            <button class="navbar-link active" data-nav-link data-page="about">About</button>
+          </li>
+
+          <li class="navbar-item">
+            <button class="navbar-link" data-nav-link data-page="resume">Foundations</button>
+          </li>
+
+          <li class="navbar-item">
+            <button class="navbar-link" data-nav-link data-page="portfolio">Projects</button>
+          </li>
+
+
+          <li class="navbar-item">
+            <button class="navbar-link" data-nav-link data-page="contact">Contact</button>
+          </li>
+
+        </ul>
+
+      </nav>
+
+
+
+      <!--
+        - #ABOUT
+      -->
+
+      <article class="about active" data-page="about">
+
+        <header>
+          <h2 class="h2 article-title">About me</h2>
+        </header>
+
+        <section class="about-text">
+          <p>
+            Hey, I am a Computer Engineering undergraduate with hands-on experience in data structures, machine learning, and deep learning, 
+            developed through multiple academic and self-driven projects. I am skilled in Python, C++, and SQL,
+             and have experience in data preprocessing, exploratory data analysis, and model development using real-world datasets.
+          </p>
+
+          <p>
+            I have a strong interest in the data science domain and aspire to build a successful career as a data scientist, 
+            where I can apply analytical thinking, technical skills, and continuous learning to solve real-world problems and create meaningful impact.
+          </p>
+        </section>
+
+        
+
+
+        <!--
+          - service
+        -->
+
+        <section class="service">
+
+          <h3 class="h3 service-title">Currently, I am strengthening my foundations in :</h3>
+
+          <ul class="service-list">
+
+            <li class="service-item">
+
+              <div class="service-icon-box">
+                <img src="./images/icon-dev.svg
+                " alt="design icon" width="40">
+              </div>
+
+              <div class="service-content-box">
+                <h4 class="h4 service-item-title">Python Programming</h4>
+
+                <p class="service-item-text">
+                  Used for implementing algorithms, processing data, automating tasks, and developing end-to-end machine learning and data science workflows.
+                </p>
+              </div>
+
+            </li>
+
+            <li class="service-item">
+
+              <div class="service-icon-box">
+                <img src="./images/icon-design.svg" alt="Web development icon" width="40">
+              </div>
+
+              <div class="service-content-box">
+                <h4 class="h4 service-item-title">Data Analysis (Pandas, NumPy)</h4>
+
+                <p class="service-item-text">
+                  Applied to clean, transform, and analyze large datasets, perform statistical analysis, and prepare data for visualization and machine learning models.
+                </p>
+              </div>
+
+            </li>
+
+            <li class="service-item">
+
+              <div class="service-icon-box">
+                <img src="./images/ML.svg" alt="mobile app icon" width="40">
+              </div>
+
+              <div class="service-content-box">
+                <h4 class="h4 service-item-title">Machine Learning</h4>
+
+                <p class="service-item-text">
+                  Used to build, train, and evaluate predictive and classification models that solve real-world problems such as trend prediction and pattern recognition.
+                </p>
+              </div>
+
+            </li>
+
+            <li class="service-item">
+
+              <div class="service-icon-box">
+                <img src="./images/DL.svg" alt="camera icon" width="40">
+              </div>
+
+              <div class="service-content-box">
+                <h4 class="h4 service-item-title">Deep Learning</h4>
+
+                <p class="service-item-text">
+                  Applied to design and train neural network models for complex tasks like image classification and feature extraction from high-dimensional data.
+                </p>
+              </div>
+
+            </li>
+
+          </ul>
+
+        </section>
+
+
+        <!--
+          - testimonials
+        -->
+
+        <section class="testimonials">
+
+          <h3 class="h3 testimonials-title">ACHIEVEMENTS</h3>
+
+          <ul class="testimonials-list has-scrollbar">
+
+            <li class="testimonials-item">
+              <div class="content-card" data-testimonials-item>
+
+                <figure class="testimonials-avatar-box">
+                  <img src="./images/hacker-rank.png" class="achievement-logo" alt="HackerRank logo" width="60" data-testimonials-avatar>
+                </figure>
+
+                <h4 class="h4 testimonials-item-title" data-testimonials-title>HackerRank</h4>
+
+                <div class="testimonials-text" data-testimonials-text>
+                  <p>
+                    Achieved 5★ in C++, Python, and Problem Solving on coding platforms.
+                    Demonstrates consistent practice and understanding of core programming concepts.
+                  </p>
+                </div>
+
+              </div>
+            </li>
+
+            <li class="testimonials-item">
+              <div class="content-card" data-testimonials-item>
+
+                <figure class="testimonials-avatar-box">
+                  <img src="./images/Nptel.png" class="achievement-logo" alt="Nptel logo" width="60" data-testimonials-avatar>
+                </figure>
+
+                <h4 class="h4 testimonials-item-title" data-testimonials-title>NPTEL Certification</h4>
+
+                <div class="testimonials-text" data-testimonials-text>
+                  <p>
+                    Secured Elite certification by completing the NPTEL DBMS course with a consolidated score of 68% (Top 5%).
+                  </p>
+                </div>
+
+              </div>
+            </li>
+
+            <li class="testimonials-item">
+              <div class="content-card" data-testimonials-item>
+
+                <figure class="testimonials-avatar-box">
+                  
+                  <img src="./images/cc5.png" class="achievement-logo" alt="CodeChef logo" width="60" data-testimonials-avatar>
+                 
+                </figure>
+
+                <h4 class="h4 testimonials-item-title" data-testimonials-title>CodeChef</h4>
+
+                <div class="testimonials-text" data-testimonials-text>
+                  <p>
+                    Solved 250+ competitive programming problems on CodeChef with a maximum rating of 1404 (2⭐).
+                  </p>
+                </div>
+
+              </div>
+            </li>
+
+          </ul>
+
+        </section>
+
+
+      </article>
+
+
+
+
+
+      <!--
+        - #RESUME
+      -->
+
+      <article class="resume" data-page="resume">
+
+        <header>
+          <h2 class="h2 article-title">Foundations</h2>
+        </header>
+
+        <section class="timeline">
+
+          <div class="title-wrapper">
+            <div class="icon-box">
+              <ion-icon name="book-outline"></ion-icon>
+            </div>
+
+            <h3 class="h3">Education</h3>
+          </div>
+
+          <ol class="timeline-list">
+
+            <li class="timeline-item">
+
+              <h4 class="h4 timeline-item-title">The New Millennium English Medium School And Junior</h4>
+
+              <span>2008 — 2021</span>
+
+              <p class="timeline-text">
+                Completed primary and secondary education with 78.20%, marking the beginning of a structured academic journey.
+              </p>
+
+            </li>
+
+            <li class="timeline-item">
+
+              <h4 class="h4 timeline-item-title">Shri Shivaji Vidyamandir & Kanishtha Mahavidyalaya</h4>
+
+              <span>2021 — 2023</span>
+
+              <p class="timeline-text">
+                Completed Higher Secondary Education with 88.67%, and secured 98.67 percentile in MHT-CET, reflecting a strong academic foundation and consistent performance.
+              </p>
+
+            </li>
+
+            <li class="timeline-item">
+
+              <h4 class="h4 timeline-item-title">Pimpri Chinchwad College of Engineering (PCCOE), Pune</h4>
+
+              <span>2023 — 2027</span>
+
+              <p class="timeline-text">
+                Currently pursuing B.Tech in Computer Engineering, with a consistent academic record and a strong focus on engineering fundamentals.
+              </p>
+
+            </li>
+
+          </ol>
+
+        </section>
+
+
+        <section class="skill">
+
+          <h3 class="h3 skills-title">My skills</h3>
+
+          <ul class="skills-list content-card">
+
+            <li class="skills-item">
+
+              <div class="title-wrapper">
+                <h5 class="h5">Machine Learning</h5>
+                <data value="80">80%</data>
+              </div>
+
+              <div class="skill-progress-bg">
+                <div class="skill-progress-fill" style="width: 80%;"></div>
+              </div>
+
+            </li>
+
+            <li class="skills-item">
+
+              <div class="title-wrapper">
+                <h5 class="h5">Python Programming</h5>
+                <data value="70">70%</data>
+              </div>
+
+              <div class="skill-progress-bg">
+                <div class="skill-progress-fill" style="width: 70%;"></div>
+              </div>
+
+            </li>
+
+            <li class="skills-item">
+
+              <div class="title-wrapper">
+                <h5 class="h5">Data Analysis</h5>
+                <data value="90">90%</data>
+              </div>
+
+              <div class="skill-progress-bg">
+                <div class="skill-progress-fill" style="width: 90%;"></div>
+              </div>
+
+            </li>
+
+            <li class="skills-item">
+
+              <div class="title-wrapper">
+                <h5 class="h5">Deep Learning</h5>
+                <data value="50">10%</data>
+              </div>
+
+              <div class="skill-progress-bg">
+                <div class="skill-progress-fill" style="width: 10%;"></div>
+              </div>
+
+            </li>
+
+          </ul>
+
+        </section>
+
+      </article>
+
+
+
+
+
+      <!--
+        - #PORTFOLIO
+      -->
+
+      <article class="portfolio" data-page="portfolio">
+
+        <header>
+          <h2 class="h2 article-title">Projects</h2>
+        </header>
+
+        <section class="blog-posts">
+
+          <ul class="blog-posts-list">
+
+            <li class="blog-post-item" data-project-item>
+              <a href="javascript:void(0)">
+
+                <figure class="blog-banner-box">
+                  <img src="./images/gimini.png" alt="Design conferences in 2022" loading="lazy" data-project-img>
+                </figure>
+
+                <div class="blog-content">
+
+                  <div class="blog-meta">
+                    <p class="blog-category" data-project-tag>Deep Learning</p>
+
+                    <span class="dot"></span>
+
+                    <p class="blog-category" data-project-tag>Image Classification</p>
+                  </div>
+
+                  
+
+                  <h3 class="h3 blog-item-title" data-project-title>Alzheimer’s Disease Classification</h3>
+
+                  <p class="blog-text" data-project-desc>
+                    Deep Learning project to classify Alzheimer’s Disease vs Normal brain MRI scans using transfer learning.
+                  </p>
+
+                </div>
+
+              </a>
+            </li>
+
+            <li class="blog-post-item" data-project-item>
+              <a href="javascript:void(0)">
+
+                <figure class="blog-banner-box">
+                  <img src="./images/gemini2.png" alt="Best fonts every designer" loading="lazy" data-project-img>
+                </figure>
+
+                <div class="blog-content">
+
+                  <div class="blog-meta">
+                    <p class="blog-category" data-project-tag>Data Analysis</p>
+
+                    <span class="dot"></span>
+
+                    <p class="blog-category" data-project-tag>Exploratory Data Analysis</p>
+                  </div>
+
+                  <h3 class="h3 blog-item-title" data-project-title>Swiggy Data Analysis</h3>
+
+                  <p class="blog-text" data-project-desc>
+                    Data Analysis and Machine Learning project to explore Swiggy food trends and predict food prices and delivery time.
+                  </p>
+
+                </div>
+
+              </a>
+            </li>
+
+            <li class="blog-post-item" data-project-item>
+              <a href="javascript:void(0)">
+
+                <figure class="blog-banner-box">
+                  <img src="./images/gemini3.png" alt="Design digest #80" loading="lazy" data-project-img>
+                </figure>
+
+                <div class="blog-content">
+
+                  <div class="blog-meta">
+                    <p class="blog-category" data-project-tag>Machine Learning</p>
+
+                    <span class="dot"></span>
+
+                    <p class="blog-category" data-project-tag>Prediction</p>
+                  </div>
+
+                  <h3 class="h3 blog-item-title" data-project-title>Suitable Package and Portfolio Prediction</h3>
+
+                  <p class="blog-text" data-project-desc>
+                    Machine Learning project to estimate suitable salary packages and employee performance patterns using historical and productivity-related data.
+                  </p>
+
+                </div>
+
+              </a>
+            </li>
+
+            
+          </ul>
+
+        </section>
+
+      </article>
+
+
+
+
+    <!-- PROJECT MODAL -->
+
+<!-- PROJECT MODAL -->
+<div class="modal-container" data-project-modal>
+
+  <div class="overlay" data-project-overlay></div>
+
+  <section class="testimonials-modal project-modal">
+
+    <div class="modal-content project-modal-content">
+
+      <button class="modal-close-btn" data-project-close>
+        <ion-icon name="close-outline"></ion-icon>
+      </button>
+
+      <h2 class="project-modal-title" data-project-modal-title></h2>
+
+      <p class="project-modal-subtitle" data-project-modal-subtitle></p>
+
+      <div class="project-section">
+        <h4>Problem Statement</h4>
+        <p data-project-problem></p>
+      </div>
+
+      <div class="project-section">
+        <h4>Tech Stack</h4>
+        <div class="tech-stack" data-project-tech></div>
+      </div>
+
+      <div class="project-section">
+        <h4>What I Did</h4>
+        <ul data-project-work></ul>
+      </div>
+
+      <div class="project-section highlight">
+        <h4>Results & Impact</h4>
+        <p data-project-result></p>
+      </div>
+
+      <div class="modal-buttons">
+        <a href="#" target="_blank" class="github-btn" data-project-github>
+          View on GitHub
+        </a>
+      </div>
+
+    </div>
+
+  </section>
+</div>
+
+
+
+      <!--
+        - #CONTACT
+      -->
+
+      <article class="contact" data-page="contact">
+
+        <header>
+          <h2 class="h2 article-title">Contact</h2>
+        </header>
+        
+
+        <section class="mapbox" data-mapbox>
+          <figure>
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7563.762358019532!2d73.80990654116403!3d18.57939488010211!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2b8cecb206ac1%3A0x1f636eef55f8ac8b!2sNew%20Sangavi%2C%20Pimpri-Chinchwad%2C%20Maharashtra!5e0!3m2!1sen!2sin!4v1767726600267!5m2!1sen!2sin"
+              width="400" height="300" loading="lazy"></iframe>
+          </figure>
+        </section>
+
+        <section class="contact-form">
+
+          <h3 class="h3 form-title">Contact Form</h3>
+
+          <form id="contact-form" class="form">
+
+            <div class="input-wrapper">
+              <input type="text" name="fullname" class="form-input" placeholder="Full name" required data-form-input>
+
+              <input type="email" name="email" class="form-input" placeholder="Email address" required data-form-input>
+            </div>
+
+            <textarea name="message" class="form-input" placeholder="Your Message" required data-form-input></textarea>
+
+            <button class="form-btn" type="submit">
+              <ion-icon name="paper-plane"></ion-icon>
+              <span>Send Message</span>
+            </button>
+
+          </form>
+
+
+        </section>
+
+      </article>
+
+    </div>
+
+  </main>
+
+
+
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+
+  <script src="javascript.js"></script>
+  <script src="javascript2.js"></script>
+
+  <!--
+    - ionicon link
+  -->
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+  
+
+
+
+</body>
+
+</html>
+
