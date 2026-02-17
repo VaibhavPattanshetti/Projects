@@ -1,0 +1,322 @@
+#include <iostream>
+using namespace std;
+
+class CPUScheduling{
+    int n, time = 0;    // n  -> number of processes, time -> global system clock
+    // at  -> arrival time, bt  -> burst time, ct  -> completion time, tat -> turnaround time, wt  -> waiting time, rt  -> remaining time, p   -> priority (lower value = higher priority)
+    int at[10], bt[10], ct[10], tat[10], wt[10], rt[10], p[10];
+    int completed = 0;  // number of completed processes
+
+public:
+
+    void AddData(){ // Function to input arrival time, burst time and priority
+        cout << "Enter number of processes: ";
+        cin >> n;
+
+        for (int i = 0; i < n; i++) {
+            cout << "Enter AT, BT and Priority of P" << (i+1) << ": ";
+            cin >> at[i] >> bt[i] >> p[i];
+            rt[i] = bt[i];  // initially remaining time = burst time
+        }
+        
+        cout<<endl;
+    }
+    
+    void Print(){   // Function to print process table and averages
+        float AvgWT=0,AvgTAT=0;
+        
+        cout << "\nP\tAT\tBT\tCT\tTAT\tWT\n";
+        for (int i = 0; i < n; i++) {
+            cout << "P" << (i+1) << "\t" << at[i] << "\t" << bt[i]
+                 << "\t" << ct[i] << "\t" << tat[i]
+                 << "\t" << wt[i] << endl;
+            AvgWT += wt[i];
+            AvgTAT += tat[i];
+        }
+        
+        AvgWT = AvgWT/n;
+        AvgTAT = AvgTAT/n;
+        cout<<"Average Weight : "<<AvgWT<<endl;
+        cout<<"Average TAT : "<<AvgTAT<<endl;
+        cout<<endl;
+    }
+
+    void NonPremptiveSJF(){ // NON-PREEMPTIVE SJF
+        time = 0;
+        completed = 0;
+        for(int i = 0; i < n; i++)  
+            rt[i] = bt[i];
+                
+        while (completed < n) {
+                
+            int minBT = 999, p = -1;
+
+            for (int j = 0; j < n; j++) {   // find shortest job among arrived processes
+                if (at[j] <= time && rt[j] > 0 && bt[j] < minBT) {
+                    minBT = bt[j];
+                    p = j;
+                }
+            }
+
+            if (p == -1) {  // if no process is ready, CPU is idle
+                time++;
+            } else {
+                time += bt[p];
+                rt[p] = 0;
+                ct[p] = time;
+                tat[p] = ct[p] - at[p];
+                wt[p] = tat[p] - bt[p];
+                completed++;
+            }
+        }
+        
+        
+        cout<<"Non-Premptive SJF";
+        Print();
+    }
+    
+    void PremptiveSJF(){    //PREEMPTIVE SJF (SRTF)
+        time = 0;
+        completed = 0;
+        for(int i = 0; i < n; i++)
+            rt[i] = bt[i];
+    
+        while (completed < n) {
+
+            int minRT = 9999, p = -1;
+    
+            for (int j = 0; j < n; j++) {   // find process with shortest remaining time
+                if (at[j] <= time && rt[j] > 0 && rt[j] < minRT) {
+                    minRT = rt[j];
+                    p = j;
+                }
+            }
+    
+            if (p == -1) {
+                time++;   // CPU idle
+            } else {
+                rt[p]--;  // execute for 1 unit
+                time++;
+    
+                // if process finishes
+                if (rt[p] == 0) {
+                    ct[p] = time;
+                    tat[p] = ct[p] - at[p];
+                    wt[p] = tat[p] - bt[p];
+                    completed++;
+                }
+            }
+        }
+        
+        cout<<"Premptive SJF";
+        Print();
+    }
+    
+    void FCFS(){    //First-Come, First-Served
+        time = 0;
+        completed = 0;
+        for(int i = 0; i < n; i++)
+            rt[i] = bt[i];
+                
+        while (completed < n) {
+                
+            int p = -1, MinAT=99;
+
+            for (int j = 0; j < n; j++) {   // select process with minimum arrival time
+                if (at[j] <= time && at[j] < MinAT && rt[j] > 0) {
+                    MinAT = at[j];
+                    p = j;
+                }
+            }
+
+            if (p == -1) {
+                time++;
+            } else {
+                time += bt[p];
+                rt[p] = 0;
+                ct[p] = time;
+                tat[p] = ct[p] - at[p];
+                wt[p] = tat[p] - bt[p];
+                completed++;
+            }
+        }
+        
+        cout<<"FCFS";
+        Print();
+    }
+    
+    
+    void RoundRobin() { //ROUND ROBIN
+        int tq;
+        cout << "Enter Time Quantum: ";
+        cin >> tq;
+    
+        time = 0;
+        completed = 0;
+        for (int i = 0; i < n; i++)
+            rt[i] = bt[i];
+    
+        bool inQueue[10] = {false};
+        int q[100], front = 0, rear = 0;
+    
+        // add first arriving processes
+        for (int i = 0; i < n; i++) {
+            if (at[i] == 0) {
+                q[rear++] = i;
+                inQueue[i] = true;
+            }
+        }
+    
+        while (completed < n) {
+    
+            // CPU idle
+            if (front == rear) {
+                time++;
+    
+                // add newly arrived processes
+                for (int i = 0; i < n; i++) {
+                    if (at[i] == time && rt[i] > 0 && !inQueue[i]) {
+                        q[rear++] = i;
+                        inQueue[i] = true;
+                    }
+                }
+                continue;
+            }
+    
+            int p = q[front++];
+            inQueue[p] = false;
+    
+            int exec = min(tq, rt[p]);
+            rt[p] -= exec;
+            time += exec;
+    
+            // add processes that arrived during execution
+            for (int i = 0; i < n; i++) {
+                if (at[i] > time - exec && at[i] <= time && rt[i] > 0 && !inQueue[i]) {
+                    q[rear++] = i;
+                    inQueue[i] = true;
+                }
+            }
+    
+            if (rt[p] == 0) {
+                ct[p] = time;
+                tat[p] = ct[p] - at[p];
+                wt[p] = tat[p] - bt[p];
+                completed++;
+            } else {
+                q[rear++] = p;
+                inQueue[p] = true;
+            }
+        }
+    
+        cout << "Round Robin";
+        Print();
+    }
+
+    void NonPreemptivePriority() {  //NON-PREEMPTIVE PRIORITY
+        time = 0;
+        completed = 0;
+        for (int i = 0; i < n; i++)
+            rt[i] = bt[i];
+    
+        while (completed < n) {
+    
+            int highestPriority = 9999;
+            int idx = -1;
+    
+            // select process with highest priority (lowest p value)
+            for (int i = 0; i < n; i++) {
+                if (at[i] <= time && rt[i] > 0 && p[i] < highestPriority) {
+                    highestPriority = p[i];
+                    idx = i;
+                }
+            }
+    
+            // CPU idle
+            if (idx == -1) {
+                time++;
+            } 
+            else {
+                time += bt[idx];
+                rt[idx] = 0;
+                ct[idx] = time;
+                tat[idx] = ct[idx] - at[idx];
+                wt[idx] = tat[idx] - bt[idx];
+                completed++;
+            }
+        }
+    
+        cout << "Non-Preemptive Priority Scheduling";
+        Print();
+    }
+    
+    
+    void PreemptivePriority() { //PREEMPTIVE PRIORITY
+        time = 0;
+        completed = 0;
+        for (int i = 0; i < n; i++)
+            rt[i] = bt[i];
+    
+        while (completed < n) {
+    
+            int highestPriority = 9999;
+            int idx = -1;
+    
+            // select process with highest priority (lowest p value)
+            for (int i = 0; i < n; i++) {
+                if (at[i] <= time && rt[i] > 0 && p[i] < highestPriority) {
+                    highestPriority = p[i];
+                    idx = i;
+                }
+            }
+    
+            // CPU idle
+            if (idx == -1) {
+                time++;
+            } 
+            else {
+                rt[idx]--;  // execute for 1 unit
+                time++;
+            
+                // if process finishes
+                if (rt[idx] == 0) {
+                    ct[idx] = time;
+                    tat[idx] = ct[idx] - at[idx];
+                    wt[idx] = tat[idx] - bt[idx];
+                    completed++;
+                }
+            }
+        }
+    
+        cout << "Preemptive Priority Scheduling";
+        Print();
+    }
+
+    
+};
+
+
+int main() {
+    CPUScheduling obj;
+   
+    obj.AddData();
+    obj.NonPremptiveSJF();
+    obj.PremptiveSJF();
+    obj.FCFS();
+    obj.RoundRobin();
+    obj.NonPreemptivePriority();
+    obj.PreemptivePriority();
+
+
+    return 0;
+}
+
+
+// Enter number of processes: 7
+// Enter AT and BT of P1: 0 6
+// Enter AT and BT of P2: 1 4
+// Enter AT and BT of P3: 2 5
+// Enter AT and BT of P4: 3 3
+// Enter AT and BT of P5: 4 6
+// Enter AT and BT of P6: 5 2
+// Enter AT and BT of P7: 6 4
